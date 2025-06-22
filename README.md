@@ -75,24 +75,15 @@ EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 For demonstration purposes, a simple LLM integration can be added. The core RAG infrastructure is complete - connecting to any LLM provider is straightforward:
 
 ```python
-# OpenAI Integration Example
-from openai import OpenAI
-client = OpenAI(api_key="your-api-key")
+"""Optional: Simple LLM integration demo"""
+    print("Note: Add your preferred LLM here (OpenAI, Claude, local model)")
 
+# api integration
 def query_with_context(question):
     # Retrieve relevant documents
-    docs = rag_processor.similarity_search(question, k=3)
-    context = "\n".join([doc.page_content for doc in docs])
-    
-    # Generate response with context
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": f"Answer based on this context: {context}"},
-            {"role": "user", "content": question}
-        ]
-    )
-    return response.choices[0].message.content
+    # your llm logice comes here
+    return response
+
 
 # Local Model Example  
 from transformers import pipeline
